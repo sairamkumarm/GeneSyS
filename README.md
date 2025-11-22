@@ -7,7 +7,6 @@ GeneSyS is a lightweight, file-level sync tool that keeps two folders identical.
 GeneSyS keeps decisions simple: add, overwrite, delete, or skip. No cloud, no accounts, no hidden magic.
 
 ---
-
 ## Features
 
 GeneSyS provides a predictable sync model:
