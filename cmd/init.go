@@ -4,6 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"genesys/internal/repository"
 
 	"github.com/spf13/cobra"
@@ -19,15 +20,24 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Args: cobra.RangeArgs(0,1),
+	Args: cobra.RangeArgs(0, 1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var target string
-		if len(args)==0 {
+		if len(args) == 0 {
 			target = ""
-		} else{
-			target=args[0]
+		} else {
+			target = args[0]
 		}
-		return repository.InitOrLoadRepo(target)
+		status, err := repository.InitOrLoadRepo(target)
+		switch status {
+		case 0:
+			fmt.Println("GeneSyS repository initialised at", target)
+		case 1:
+			fmt.Println("Error during attempted initialisation", target, ", got",err)
+		case 2:
+			fmt.Println("GeneSyS repository already initialised at", target)
+		}
+		return err
 	},
 }
 

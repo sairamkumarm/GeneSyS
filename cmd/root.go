@@ -4,6 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -18,8 +19,9 @@ It works over QUIC for fast, stable transfers and uses a small .genesys director
 Both sides run the same binary. One side acts as the **local** executor, the other as the **remote** server.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) {
-	// },
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Root running")
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
